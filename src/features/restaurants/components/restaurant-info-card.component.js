@@ -16,6 +16,7 @@ import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
+import { Favourite } from "../../../components/favourites/favourite.component";
 
 export const RestaurantInfoCard = ({ restaurant }) => {
   const {
@@ -33,6 +34,7 @@ export const RestaurantInfoCard = ({ restaurant }) => {
   return (
     <>
       <RestaurantCard elevation={5}>
+        <Favourite restaurant={restaurant} />
         <CardCover key={name} source={{ uri: photos[0] }} />
         <Info>
           <Text variant="label">{name}</Text>

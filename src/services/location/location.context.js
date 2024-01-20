@@ -18,9 +18,10 @@ export const LocationContextProvider = ({ children }) => {
     if (!keyword.length) {
       return;
     }
-    locationRequest(keyword.toLowerCase())
+    locationRequest(keyword)
       .then(locationTransform)
       .then((result) => {
+        setError(null);
         setIsLoading(false);
         setLocation(result);
       })

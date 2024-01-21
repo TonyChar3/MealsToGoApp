@@ -4,10 +4,10 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { SettingsNavigator } from "./settings.navigator";
-
+import { CheckoutNavigator } from "./checkout.navigator";
 import { MapScreen } from "../../features/map/screens/map.screen";
-import { SettingScreen } from "../../features/settings/screen/settings.screen";
 
+import { CartContextProvider } from "../../services/cart/cart.context";
 import { LocationContextProvider } from "../../services/location/location.context";
 import { RestaurantsContextProvider } from "../../services/restaurants/restaurants.context";
 import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
@@ -16,6 +16,7 @@ const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
   Restaurants: "md-restaurant",
+  Checkout: "md-cart",
   Map: "md-map",
   Settings: "md-settings",
 };
@@ -36,23 +37,30 @@ export const AppNavigator = () => {
     <FavouritesContextProvider>
       <LocationContextProvider>
         <RestaurantsContextProvider>
-          <Tab.Navigator screenOptions={createScreenOptions}>
-            <Tab.Screen
-              name="Restaurants"
-              component={RestaurantsNavigator}
-              options={{ headerShown: false }}
-            />
-            <Tab.Screen
-              name="Map"
-              component={MapScreen}
-              options={{ headerShown: false }}
-            />
-            <Tab.Screen
-              name="Settings"
-              component={SettingsNavigator}
-              options={{ headerShown: false }}
-            />
-          </Tab.Navigator>
+          <CartContextProvider>
+            <Tab.Navigator screenOptions={createScreenOptions}>
+              <Tab.Screen
+                name="Restaurants"
+                component={RestaurantsNavigator}
+                options={{ headerShown: false }}
+              />
+              <Tab.Screen
+                name="Checkout"
+                component={CheckoutNavigator}
+                options={{ headerShown: false }}
+              />
+              <Tab.Screen
+                name="Map"
+                component={MapScreen}
+                options={{ headerShown: false }}
+              />
+              <Tab.Screen
+                name="Settings"
+                component={SettingsNavigator}
+                options={{ headerShown: false }}
+              />
+            </Tab.Navigator>
+          </CartContextProvider>
         </RestaurantsContextProvider>
       </LocationContextProvider>
     </FavouritesContextProvider>

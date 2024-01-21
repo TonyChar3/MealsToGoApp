@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon@2x.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.tonydev.io.MealsToGo"
     },
     "extra": {
       "eas": {
